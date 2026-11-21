@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Calculatrice">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no">
+<title>Calculatrice</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>
+  :root{
+    --orange:#ff9400;  --orange-d:#ffbf05;
+    --digit:#353535;   --digit-d:#676767;
+    --fn:#616161;      --fn-d:#919191;
+    --top:#202020;     --top-d:#3d3d3d;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;
+    -webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+  html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden;
+    overscroll-behavior:none;touch-action:manipulation}
+  body{position:fixed;inset:0;color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro",Inter,"Helvetica Neue",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;cursor:default}
+
+  /* Scène de conception 393 × 852 pt, mise à l'échelle par JS pour remplir l'écran */
+  #stage{position:absolute;left:0;top:0;width:393px;height:852px;transform-origin:0 0;will-change:transform}
+
+  /* ---------- Boutons ---------- */
+  .key,.top{position:absolute;border-radius:50%;display:grid;place-items:center;
+    background-color:var(--c);color:#fff;touch-action:none;
+    transition:background-color .38s cubic-bezier(.22,.8,.3,1),transform .38s cubic-bezier(.22,.8,.3,1)}
+  .key{width:84px;height:84px;font-weight:600;font-size:36px;line-height:1;
+    background-image:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,0) 34%,rgba(255,255,255,0) 66%,rgba(255,255,255,.03));
+    box-shadow:inset 0 2px 1px -1px rgba(255,255,255,.27),inset 0 -2px 1px -1px rgba(255,255,255,.27),
+               inset 0 4px 4px -3px rgba(255,255,255,.06),inset 0 -4px 4px -3px rgba(255,255,255,.06)}
+  .key.digit{--c:var(--digit);--cd:var(--digit-d)}
+  .key.fn{--c:var(--fn);--cd:var(--fn-d)}
+  .key.op{--c:var(--orange);--cd:var(--orange-d);color:#fffff2;
+    box-shadow:inset 0 2px 1px -1px rgba(255,255,0,.42),inset 0 -2px 1px -1px rgba(255,255,0,.42),
+               inset 0 4px 4px -3px rgba(255,255,0,.08),inset 0 -4px 4px -3px rgba(255,255,0,.08)}
+  .top{width:44px;height:44px;--c:var(--top);--cd:var(--top-d);
+    box-shadow:inset 0 2px 1px -1px rgba(255,255,255,.22),inset 0 -2px 1px -1px rgba(255,255,255,.22),
+               inset 0 4px 4px -3px rgba(255,255,255,.05),inset 0 -4px 4px -3px rgba(255,255,255,.05)}
+  .down{background-color:var(--cd);transform:scale(1.1);z-index:2;
+    transition-duration:.07s,.07s;transition-timing-function:ease-out}
+  .key svg,.top svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;
+    fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+  .top svg{color:#fafafa}
+  /* horloge : 9 h au repos, 10 h quand le tour est armé (fondu enchaîné rapide) */
+  .top svg .h9,.top svg .h10{transition:opacity .16s ease-in-out}
+  .top svg .h10{opacity:0}
+  .top.armed svg .h9{opacity:0}
+  .top.armed svg .h10{opacity:1}
+  /* zone secrète invisible, juste au-dessus de la touche AC */
+  #zone{position:absolute;left:104px;top:273px;width:92px;height:64px;touch-action:none}
+  /* partie « clavier » de l'écran : du haut de la 1re rangée au bas de la touche « = », marges latérales comprises.
+     Pendant le forçage, un appui n'importe où ici (entre les touches, sur les côtés) ajoute un chiffre
+     et allume la touche la plus proche. */
+  #pad{position:absolute;left:-2000px;top:337.3px;width:4393px;height:452.8px;touch-action:none}
+
+  /* ---------- Affichage ---------- */
+  .txt{position:absolute;left:16px;width:361px;text-align:right;white-space:nowrap;
+    font-weight:600;line-height:1;pointer-events:none}
+  #expr{color:#8e8e93}
+  .txt .t{display:inline-block}
+  .txt .t i{display:inline-block;width:.095em;height:0}
+  .txt .probe{display:inline-block;width:0;height:0}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="txt" id="expr"><span class="t"></span><b class="probe"></b></div>
+  <div class="txt" id="main"><span class="t"></span><b class="probe"></b></div>
+  <div id="zone"></div>
+  <div id="pad"></div>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+/* ======================================================================
+   RÉGLAGE DU TOUR : le nombre que la calculatrice fera toujours apparaître
+   ====================================================================== */
+const TARGET = '31917';
+
+/* Déclenchement secret : 3 appuis consécutifs dans la zone invisible juste au-dessus de AC
+   (réglable dans le CSS : #zone). Chaque série de 3 appuis arme ou désarme le tour ;
+   l'horloge en haut à gauche passe de 9 h à 10 h quand il est armé. */
+const TRIPLE_GAP_MS = 650;      // délai maximal entre deux appuis de la série
+let TRICK = false;              // tour armé ?
+let clockRevertPending = false; // l'horloge ne repasse à 9 h qu'à la touche suivant la révélation
+
+/* ======================================================================
+   Arithmétique décimale exacte (BigInt) : pas d'erreurs d'arrondi du type 0,1+0,2
+   ====================================================================== */
+const D = {
+  parse(s){
+    s = String(s); let neg = false;
+    if (s[0] === '-'){ neg = true; s = s.slice(1); }
+    let [i, f = ''] = s.split('.'); if (i === '') i = '0';
+    let n = BigInt(i + f); if (neg) n = -n;
+    return { n, scale: f.length };
+  },
+  align(a, b){
+    const s = Math.max(a.scale, b.scale);
+    return [a.n * 10n ** BigInt(s - a.scale), b.n * 10n ** BigInt(s - b.scale), s];
+  },
+  add(a, b){ const [x, y, s] = D.align(a, b); return { n: x + y, scale: s }; },
+  sub(a, b){ const [x, y, s] = D.align(a, b); return { n: x - y, scale: s }; },
+  mul(a, b){ return { n: a.n * b.n, scale: a.scale + b.scale }; },
+  div(a, b){
+    if (b.n === 0n) return null;
+    const P = 20;
+    const num = a.n * 10n ** BigInt(b.scale + P), den = b.n * 10n ** BigInt(a.scale);
+    return { n: num / den, scale: P };            // tronqué ; fixDiv() arrondit à l'affichage
+  },
+  round(x, dec){
+    if (x.scale <= dec) return x;
+    const d = 10n ** BigInt(x.scale - dec);
+    let n = x.n < 0n ? -x.n : x.n, q = n / d;
+    if ((n % d) * 2n >= d) q += 1n;
+    return { n: x.n < 0n ? -q : q, scale: dec };
+  },
+  str(x){
+    let neg = x.n < 0n, s = (neg ? -x.n : x.n).toString();
+    if (x.scale > 0){
+      s = s.padStart(x.scale + 1, '0');
+      const i = s.slice(0, -x.scale), f = s.slice(-x.scale).replace(/0+$/, '');
+      s = f ? i + '.' + f : i;
+    }
+    if (/^0(\.0*)?$/.test(s)) neg = false;
+    return (neg ? '-' : '') + s;
+  }
+};
+// résultat d'une division : 15 chiffres significatifs maximum
+function fixDiv(x){
+  const intDigits = (x.n < 0n ? -x.n : x.n).toString().length - x.scale;
+  return D.round(x, Math.max(0, Math.min(12, 15 - Math.max(intDigits, 1))));
+}
+
+/* Évaluation avec priorité des opérateurs (× ÷ avant + −) */
+function evaluate(tokens){
+  const out = [tokens[0]];
+  for (let i = 1; i < tokens.length; i += 2){
+    const op = tokens[i], v = tokens[i + 1];
+    if (op === '*' || op === '/'){
+      const a = D.parse(out.pop()), b = D.parse(v);
+      let r;
+      if (op === '*') r = D.mul(a, b);
+      else { r = D.div(a, b); if (r === null) return null; r = fixDiv(r); }
+      out.push(D.str(r));
+    } else { out.push(op, v); }
+  }
+  let acc = D.parse(out[0]);
+  for (let i = 1; i < out.length; i += 2){
+    const b = D.parse(out[i + 1]);
+    acc = out[i] === '+' ? D.add(acc, b) : D.sub(acc, b);
+  }
+  return D.str(acc);
+}
+
+/* ======================================================================
+   État de la calculatrice
+   ====================================================================== */
+const isOp = t => t === '+' || t === '-' || t === '*' || t === '/';
+const OPCH = { '+': '+', '-': '−', '*': '×', '/': '÷' };
+let S;
+function fresh(){
+  return { tokens: [], cur: null, done: false, result: '0', gray: '',
+           typed: false, forced: null, err: false };
+}
+S = fresh();
+
+/* ---------- Formatage à la française : 98 641,344 ---------- */
+function numHtml(s, inExpr){
+  const neg = s[0] === '-', body = neg ? s.slice(1) : s;
+  const dot = body.indexOf('.');
+  const ip = dot < 0 ? body : body.slice(0, dot), fp = dot < 0 ? '' : body.slice(dot + 1);
+  let h = ip.replace(/\B(?=(\d{3})+(?!\d))/g, '<i></i>');
+  if (dot >= 0) h += ',' + fp;
+  if (neg) h = '−' + h;
+  return (neg && inExpr) ? '(' + h + ')' : h;
+}
+function exprHtml(tokens, cur){
+  const all = cur !== null ? tokens.concat([cur]) : tokens;
+  return all.map((t, i) => isOp(t) ? OPCH[t] : numHtml(t, i > 0)).join('');
+}
+
+/* ======================================================================
+   Logique des touches
+   ====================================================================== */
+function handle(k){
+  if (clockRevertPending){ clockRevertPending = false; showClock(TRICK); }
+  if (S.err){ S = fresh(); if (k === 'ac') return; }
+
+  /* --- Phase « forçage » : toute touche (sauf =) fait apparaître le chiffre suivant --- */
+  if (S.forced && k !== 'eq'){ forcedTap(); return; }
+  if (S.forced && k === 'eq'){ finishForce(); return; }
+
+  if (/^[0-9]$/.test(k)) return digit(k);
+  switch (k){
+    case 'dot': return comma();
+    case 'ac':  S = fresh(); return;
+    case 'bs':  return backspace();
+    case 'pm':  return plusMinus();
+    case 'pct': return percent();
+    case 'eq':  return equals();
+    case 'add': case 'sub': case 'mul': case 'div':
+      return operator({ add: '+', sub: '-', mul: '*', div: '/' }[k]);
+  }
+}
+
+function newAfterResult(){
+  if (S.done){ S.tokens = []; S.cur = null; S.done = false; S.gray = ''; }
+}
+function digit(d){
+  newAfterResult();
+  if (S.cur === null) S.cur = d;
+  else if (S.cur === '0') S.cur = d;
+  else if (S.cur === '-0') S.cur = d === '0' ? '-0' : '-' + d;
+  else if (S.cur.replace(/\D/g, '').length < 15) S.cur += d;
+  S.typed = true;
+}
+function comma(){
+  newAfterResult();
+  if (S.cur === null) S.cur = '0.';
+  else if (!S.cur.includes('.')) S.cur += '.';
+  S.typed = true;
+}
+function plusMinus(){
+  if (S.done){ S.result = D.str(D.mul(D.parse(S.result), D.parse('-1'))); return; }
+  if (S.cur === null) S.cur = '-0';
+  else S.cur = S.cur[0] === '-' ? S.cur.slice(1) : '-' + S.cur;
+  S.typed = true;
+}
+function percent(){
+  if (S.done){ S.result = D.str(fixDiv(D.div(D.parse(S.result), D.parse('100')))); return; }
+  if (S.cur === null) return;
+  const v = D.parse(S.cur), t = S.tokens, last = t[t.length - 1];
+  let r;
+  if (t.length >= 2 && (last === '+' || last === '-')){
+    const base = evaluate(t.slice(0, -1));       // 200 + 10 %  →  200 + 20
+    r = D.div(D.mul(D.parse(base), v), D.parse('100'));
+  } else r = D.div(v, D.parse('100'));
+  S.cur = D.str(fixDiv(r)); S.typed = true;
+}
+function backspace(){
+  if (S.done) return;
+  if (S.cur !== null){
+    S.cur = S.cur.slice(0, -1);
+    if (S.cur === '' || S.cur === '-') { S.cur = null; if (!S.tokens.length) S.typed = false; }
+  } else if (S.tokens.length && isOp(S.tokens[S.tokens.length - 1])){
+    S.tokens.pop(); S.cur = S.tokens.length ? S.tokens.pop() : null;
+  }
+}
+function operator(op){
+  if (S.done){
+    const R = S.result;
+    S.tokens = [R]; S.cur = null; S.done = false; S.gray = '';
+    if (TRICK && (op === '+' || op === '-')) startForce(R);
+    S.tokens.push(op);
+  } else if (S.cur !== null){
+    S.tokens.push(S.cur, op); S.cur = null;
+  } else if (S.tokens.length){
+    const i = S.tokens.length - 1;
+    if (isOp(S.tokens[i])) S.tokens[i] = op; else S.tokens.push(op);
+  } else {
+    S.tokens = ['0', op];
+  }
+}
+function equals(){
+  if (S.done) return;
+  const t = S.tokens.slice();
+  if (S.cur !== null) t.push(S.cur);
+  if (!t.length) return;
+  if (isOp(t[t.length - 1])) t.push(t[t.length - 2]);      // « 5 × = »  →  25
+  const res = evaluate(t);
+  if (res === null){ S.err = true; return; }
+  S.gray = t.length > 1 ? exprHtml(t, null) : '';
+  S.result = res; S.done = true; S.tokens = []; S.cur = null; S.typed = false;
+}
+
+/* ======================================================================
+   LE TOUR : forçage de TARGET
+   Tour armé (3 appuis secrets), puis un résultat affiché (par ex. « A × B = ») et un appui
+   sur + ou − : chaque touche suivante (n'importe laquelle, AC/C inclus) affiche le chiffre
+   suivant de |TARGET − résultat|, de même qu'un appui n'importe où dans la partie clavier de
+   l'écran (entre les touches, marges comprises). Seule la touche « = » termine : elle donne TARGET.
+   ====================================================================== */
+function startForce(R){
+  const diff = D.sub(D.parse(TARGET), D.parse(R));          // TARGET − R
+  const neg = diff.n < 0n;
+  S.forced = {
+    op:  neg ? '-' : '+',                                   // le bon signe, quel que soit celui appuyé
+    str: D.str({ n: neg ? -diff.n : diff.n, scale: diff.scale }),
+    idx: 0, started: false
+  };
+}
+function forcedTap(){
+  const F = S.forced;
+  if (!F.started){ F.started = true; S.tokens[S.tokens.length - 1] = F.op; }
+  if (F.idx < F.str.length){
+    let c = F.str[F.idx++];
+    if (c === '.' && F.idx < F.str.length) c += F.str[F.idx++];   // la virgule arrive avec le chiffre suivant
+    S.cur = (S.cur === null ? '' : S.cur) + c;
+  }
+  S.typed = true;
+}
+function finishForce(){
+  const F = S.forced, t = [S.tokens[0], F.op, F.str];
+  S.result = evaluate(t);                                   // = TARGET, exactement
+  S.gray = exprHtml(t, null);
+  S.done = true; S.tokens = []; S.cur = null; S.typed = false; S.forced = null;
+  TRICK = false; clockRevertPending = true;               // tour consommé ; l'horloge reste à 10 h jusqu'à la touche suivante
+}
+
+/* ======================================================================
+   Affichage
+   ====================================================================== */
+const stage = document.getElementById('stage');
+const mainEl = document.getElementById('main'), exprEl = document.getElementById('expr');
+let RATIO = 0.8555;                       // position de la ligne de base / corps (mesurée au démarrage)
+
+function measureBaseline(){
+  mainEl.style.fontSize = '1000px';
+  const p = mainEl.querySelector('.probe');
+  if (p && p.offsetTop) RATIO = p.offsetTop / 1000;
+}
+function setText(el, html, base, baseline){
+  const t = el.querySelector('.t');
+  t.innerHTML = html;
+  el.style.fontSize = base + 'px';
+  const w = t.offsetWidth, avail = 361;
+  const fs = w > avail ? Math.max(base * 0.25, base * avail / w) : base;
+  el.style.fontSize = fs + 'px';
+  el.style.top = (baseline - RATIO * fs) + 'px';
+}
+let acKey = null;
+const VIEW = { s: 1, ox: 0, oy: 0 };       // échelle et décalage de la scène (mis à jour par layout())
+function render(){
+  let main, gray = '';
+  if (S.err) main = 'Erreur';
+  else if (S.done){ main = numHtml(S.result, false); gray = S.gray; }
+  else if (!S.tokens.length && S.cur === null) main = '0';
+  else main = exprHtml(S.tokens, S.cur);
+  setText(mainEl, main, 66.5, 314);
+  setText(exprEl, gray, 29, 243);
+  if (acKey) acKey.textContent = S.typed ? 'C' : 'AC';
+}
+
+/* ======================================================================
+   Boutons (rendu d'après la maquette : 84 pt, pas de 92,2 pt)
+   ====================================================================== */
+const SV = inner => `<svg viewBox="-126 -126 252 252" aria-hidden="true">${inner}</svg>`;
+const Ln = (x1, y1, x2, y2, w) => `<path d="M${x1} ${y1}L${x2} ${y2}" stroke-width="${w}"/>`;
+const ICON = {
+  div: SV(Ln(-37,0,37,0,14) + '<circle cx="0" cy="-31" r="9" fill="currentColor" stroke="none"/><circle cx="0" cy="31" r="9" fill="currentColor" stroke="none"/>'),
+  mul: SV(Ln(-29,-29,29,29,14) + Ln(29,-29,-29,29,14)),
+  sub: SV(Ln(-37,0,37,0,14)),
+  add: SV(Ln(-37,0,37,0,14) + Ln(0,-37,0,37,14)),
+  eq:  SV(Ln(-31,-17,31,-17,14) + Ln(-31,17,31,17,14)),
+  bs:  SV('<path d="M-16 -41.5H35Q45 -41.5 45 -31.5V31.5Q45 41.5 35 41.5H-16Q-21 41.5 -25 37L-50 6Q-55 0 -50 -6L-25 -37Q-21 -41.5 -16 -41.5Z" stroke-width="12"/>'
+        + Ln(-11,-16,21,16,9) + Ln(21,-16,-11,16,9)),
+  pct: SV('<ellipse cx="-32.75" cy="-24.75" rx="14.9" ry="19.6" stroke-width="12"/><ellipse cx="32.9" cy="24.5" rx="14.9" ry="19.6" stroke-width="12"/>' + Ln(31.25,-46,-30.5,44.5,10)),
+  pm:  SV(Ln(-46.5,-24.5,-17.5,-24.5,9.5) + Ln(-32,-39,-32,-10,9.5) + Ln(-31,44,31.5,-48,10) + Ln(17,26,46,26,9.5))
+};
+const LAYOUT = [
+  [['bs','fn',ICON.bs], ['ac','fn','AC'], ['pct','fn',ICON.pct], ['div','op',ICON.div]],
+  [['7','digit','7'], ['8','digit','8'], ['9','digit','9'], ['mul','op',ICON.mul]],
+  [['4','digit','4'], ['5','digit','5'], ['6','digit','6'], ['sub','op',ICON.sub]],
+  [['1','digit','1'], ['2','digit','2'], ['3','digit','3'], ['add','op',ICON.add]],
+  [['pm','digit',ICON.pm], ['0','digit','0'], ['dot','digit',','], ['eq','op',ICON.eq]]
+];
+const keyEls = {}, keyCenters = [];
+LAYOUT.forEach((row, r) => row.forEach(([k, cls, content], c) => {
+  const el = document.createElement('div');
+  el.className = 'key ' + cls; el.dataset.k = k;
+  el.style.left = (16 + c * 92.2) + 'px'; el.style.top = (337.3 + r * 92.2) + 'px';
+  el.innerHTML = content;
+  stage.appendChild(el); keyEls[k] = el;
+  keyCenters.push([el, 16 + c * 92.2 + 42, 337.3 + r * 92.2 + 42]);
+  if (k === 'ac') acKey = el;
+}));
+
+/* Boutons du haut (historique / mode) : purement décoratifs */
+const topDefs = [
+  [16, `<svg viewBox="-66 -66 132 132"><circle cx="2" cy="1" r="36.25" stroke-width="12.5"/><path d="M2 -22.5L2 6" stroke-width="9"/><path class="h9" d="M2 6L-18 6" stroke-width="9"/><path class="h10" d="M2 6L-15.3 -4" stroke-width="9"/></svg>`],
+  [333, `<svg viewBox="-66 -66 132 132"><defs><mask id="cm" stroke="none" maskUnits="userSpaceOnUse" x="-66" y="-66" width="132" height="132">
+      <rect x="-66" y="-66" width="132" height="132" fill="#000"/>
+      <rect x="-31" y="-44.5" width="62" height="89" rx="10" fill="#fff"/>
+      <rect x="-21.5" y="-35" width="43" height="21" rx="6" fill="#000"/>
+      <g fill="#000"><circle cx="-16" cy="-2" r="5.5"/><circle cx="0" cy="-2" r="5.5"/><circle cx="16" cy="-2" r="5.5"/>
+      <circle cx="-16" cy="14.3" r="5.5"/><circle cx="0" cy="14.3" r="5.5"/><circle cx="16" cy="14.3" r="5.5"/>
+      <circle cx="-16" cy="30" r="5.5"/><circle cx="0" cy="30" r="5.5"/><circle cx="16" cy="30" r="5.5"/></g></mask></defs>
+      <rect x="-66" y="-66" width="132" height="132" fill="#fafafa" stroke="none" mask="url(#cm)"/></svg>`]
+];
+const topEls = topDefs.map(([x, svg]) => {
+  const el = document.createElement('div');
+  el.className = 'top'; el.style.left = x + 'px'; el.style.top = '59px'; el.innerHTML = svg;
+  stage.appendChild(el); return el;
+});
+
+/* ======================================================================
+   Entrées : appui immédiat (pointerdown), relâchement avec fondu
+   ====================================================================== */
+const since = new WeakMap();
+function pressOn(el){ since.set(el, performance.now()); el.classList.add('down'); }
+function pressOff(el){
+  const wait = Math.max(0, 90 - (performance.now() - (since.get(el) || 0)));
+  setTimeout(() => el.classList.remove('down'), wait);
+}
+function bindPress(el, action){
+  el.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    try { el.setPointerCapture(e.pointerId); } catch (_) {}
+    pressOn(el);
+    if (action) action();
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev =>
+    el.addEventListener(ev, () => pressOff(el)));
+  el.addEventListener('contextmenu', e => e.preventDefault());
+}
+Object.values(keyEls).forEach(el => bindPress(el, () => { handle(el.dataset.k); render(); }));
+topEls.forEach(el => bindPress(el, null));
+
+/* Clavier (pratique pour essayer sur ordinateur) */
+const KEYMAP = { ',':'dot', '.':'dot', '+':'add', '-':'sub', '*':'mul', 'x':'mul', '/':'div',
+                 'Enter':'eq', '=':'eq', 'Backspace':'bs', 'Escape':'ac', 'Delete':'ac', '%':'pct' };
+window.addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = /^[0-9]$/.test(e.key) ? e.key : KEYMAP[e.key];
+  if (!k || !keyEls[k]) return;
+  e.preventDefault();
+  const el = keyEls[k]; pressOn(el); handle(k); render(); pressOff(el);
+});
+
+/* ---------- Forçage : un appui n'importe où dans la partie clavier ajoute un chiffre ----------
+   (les touches elles-mêmes sont traitées plus haut ; ceci couvre les espaces entre les touches,
+   les marges et la zone sous la dernière rangée) */
+const pad = document.getElementById('pad');
+function nearestKey(clientX, clientY){
+  const x = (clientX - VIEW.ox) / VIEW.s, y = (clientY - VIEW.oy) / VIEW.s;
+  let best = null, bd = Infinity;
+  for (const [el, cx, cy] of keyCenters){
+    const d = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+    if (d < bd){ bd = d; best = el; }
+  }
+  return best;
+}
+const padHeld = new Map();               // pointerId -> touche allumée tant que le doigt reste posé
+pad.addEventListener('pointerdown', e => {
+  e.preventDefault();
+  if (!S.forced) return;
+  try { pad.setPointerCapture(e.pointerId); } catch (_) {}
+  forcedTap(); render();
+  const k = nearestKey(e.clientX, e.clientY);
+  padHeld.set(e.pointerId, k); pressOn(k);   // visuel seul : la touche ne déclenche aucune action
+});
+['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => pad.addEventListener(ev, e => {
+  const k = padHeld.get(e.pointerId);
+  if (k){ padHeld.delete(e.pointerId); pressOff(k); }
+}));
+
+/* ---------- Déclenchement secret : 3 appuis consécutifs au-dessus d'AC ---------- */
+const zone = document.getElementById('zone');
+function showClock(on){ topEls[0].classList.toggle('armed', !!on); }
+function toggleTrick(){
+  TRICK = !TRICK; clockRevertPending = false; showClock(TRICK);
+  S = fresh(); render();                // la série de 3 appuis remet aussi la calculatrice à 0
+}
+let tapRun = 0, tapLast = 0;
+document.addEventListener('pointerdown', e => {
+  if (e.target === zone){
+    const now = performance.now();
+    tapRun = (tapRun > 0 && now - tapLast <= TRIPLE_GAP_MS) ? tapRun + 1 : 1;
+    tapLast = now;
+    if (tapRun >= 3){ tapRun = 0; toggleTrick(); }
+    e.preventDefault();
+  } else {
+    tapRun = 0;                         // tout autre appui interrompt la série
+  }
+}, true);
+window.addEventListener('keydown', () => { tapRun = 0; }, true);
+
+/* Anti-défilement / anti-zoom iOS */
+document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+['gesturestart', 'gesturechange', 'gestureend'].forEach(ev =>
+  document.addEventListener(ev, e => e.preventDefault()));
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+/* Plein écran : la scène 393 × 852 est mise à l'échelle pour remplir la fenêtre */
+function layout(){
+  const w = window.innerWidth, h = window.innerHeight;
+  const s = Math.min(w / 393, h / 852);
+  VIEW.s = s; VIEW.ox = (w - 393 * s) / 2; VIEW.oy = (h - 852 * s) / 2;
+  stage.style.transform = `translate(${(w - 393 * s) / 2}px,${(h - 852 * s) / 2}px) scale(${s})`;
+}
+window.addEventListener('resize', layout);
+window.addEventListener('orientationchange', layout);
+if (window.visualViewport) window.visualViewport.addEventListener('resize', layout);
+
+layout(); measureBaseline(); render();
+window.__calc = { handle, render, state: () => S, armed: () => TRICK };       // pour les tests
+})();
+</script>
+</body>
+</html>
