@@ -28,7 +28,8 @@
     -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;cursor:default}
 
   /* Scène de conception 393 × 852 pt, mise à l'échelle par JS pour remplir l'écran */
-  #stage{position:absolute;left:0;top:0;width:393px;height:852px;transform-origin:0 0;will-change:transform}
+  #stage{position:absolute;left:50%;top:50%;width:393px;height:852px;transform-origin:0 0;will-change:transform;
+    transform:scale(var(--s,1)) translate(-196.5px,-426px)}
 
   /* ---------- Boutons ---------- */
   .key,.top{position:absolute;border-radius:50%;display:grid;place-items:center;
@@ -495,15 +496,26 @@ document.addEventListener('touchmove', e => e.preventDefault(), { passive: false
 document.addEventListener('contextmenu', e => e.preventDefault());
 
 /* Plein écran : la scène 393 × 852 est mise à l'échelle pour remplir la fenêtre */
+function viewSize(){
+  // plusieurs sources : Safari iOS peut donner une valeur fausse au chargement
+  const vv = window.visualViewport, de = document.documentElement;
+  const w = Math.max(window.innerWidth || 0, de.clientWidth || 0, vv ? vv.width : 0);
+  const h = Math.max(window.innerHeight || 0, de.clientHeight || 0, vv ? vv.height : 0);
+  return [w, h];
+}
 function layout(){
-  const w = window.innerWidth, h = window.innerHeight;
+  const [w, h] = viewSize();
   const s = Math.min(w / 393, h / 852);
-  VIEW.s = s; VIEW.ox = (w - 393 * s) / 2; VIEW.oy = (h - 852 * s) / 2;
-  stage.style.transform = `translate(${(w - 393 * s) / 2}px,${(h - 852 * s) / 2}px) scale(${s})`;
+  stage.style.setProperty('--s', s);          // le centrage est fait par le CSS (left/top 50 %)
+  const r = stage.getBoundingClientRect();    // position réelle, pour la zone de forçage
+  VIEW.s = r.width / 393; VIEW.ox = r.left; VIEW.oy = r.top;
 }
 window.addEventListener('resize', layout);
-window.addEventListener('orientationchange', layout);
+window.addEventListener('orientationchange', () => setTimeout(layout, 300));
+window.addEventListener('load', layout);
+window.addEventListener('pageshow', layout);
 if (window.visualViewport) window.visualViewport.addEventListener('resize', layout);
+setTimeout(layout, 300); setTimeout(layout, 1000);
 
 layout(); measureBaseline(); render();
 window.__calc = { handle, render, state: () => S, armed: () => TRICK };       // pour les tests
