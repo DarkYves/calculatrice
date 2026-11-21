@@ -28,8 +28,8 @@
     -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;cursor:default}
 
   /* Scène de conception 393 × 852 pt, mise à l'échelle par JS pour remplir l'écran */
-  #stage{position:absolute;left:50%;top:50%;width:393px;height:852px;transform-origin:0 0;will-change:transform;
-    transform:scale(var(--s,1)) translate(-196.5px,-426px)}
+  #stage{position:absolute;left:50%;top:0;width:393px;height:852px;transform-origin:0 0;will-change:transform;
+    transform:scale(var(--s,1)) translate(-196.5px,var(--ty,0px))}
 
   /* ---------- Boutons ---------- */
   .key,.top{position:absolute;border-radius:50%;display:grid;place-items:center;
@@ -503,11 +503,21 @@ function viewSize(){
   const h = Math.max(window.innerHeight || 0, de.clientHeight || 0, vv ? vv.height : 0);
   return [w, h];
 }
+// Quand l'écran manque de hauteur (Safari avec sa barre), on retire jusqu'à
+// MAX_CUT pt du vide entre les icônes du haut et l'affichage : la calculatrice
+// peut alors garder toute la largeur. Les icônes restent en haut, le reste en bas.
+const MAX_CUT = 95;
 function layout(){
   const [w, h] = viewSize();
-  const s = Math.min(w / 393, h / 852);
-  stage.style.setProperty('--s', s);          // le centrage est fait par le CSS (left/top 50 %)
-  const r = stage.getBoundingClientRect();    // position réelle, pour la zone de forçage
+  const s = Math.min(w / 393, h / (852 - MAX_CUT));
+  const hv = h / s;                               // hauteur visible, en pt de conception
+  let ty, cut;
+  if (hv >= 852){ cut = 0; ty = (hv - 852) / 2; } // assez haut : centré comme avant
+  else { cut = 852 - hv; ty = -cut; }             // on cache le haut de la scène...
+  stage.style.setProperty('--s', s);
+  stage.style.setProperty('--ty', ty + 'px');
+  document.querySelectorAll('#stage > .top').forEach(el => el.style.top = (59 + cut) + 'px'); // ...et on redescend les icônes
+  const r = stage.getBoundingClientRect();        // position réelle, pour la zone de forçage
   VIEW.s = r.width / 393; VIEW.ox = r.left; VIEW.oy = r.top;
 }
 window.addEventListener('resize', layout);
